@@ -1,0 +1,19 @@
+{
+  
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+      "block-no-empty": null,
+      "color-no-invalid-hex": true,
+      "no-extra-semicolons": true,
+      "color-hex-length": "short",
+      "unit-no-unknown": true,
+      "no-empty-source": true,
+      "selector-max-empty-lines": 0,
+      "declaration-bang-space-after":"never",
+      "property-no-unknown": true,
+      "selector-pseudo-class-no-unknown": true
+    
+  }
+}

@@ -1,0 +1,70 @@
+$url1: url("../img/spritsheet.png");
+
+@font-face {
+  font-family: "gothambook";
+  src:
+    url("fonts/gothambook-webfont.woff2") format("woff2"),
+    url("fonts/gothambook-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gothambold";
+  src:
+    url("fonts/gothambold-webfont.woff2") format("woff2"),
+    url("fonts/gothambold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gothamlight";
+  src:
+    url("fonts/gothamlight-webfont.woff2") format("woff2"),
+    url("fonts/gothamlight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gothammedium";
+  src:
+    url("fonts/gothammedium-webfont.woff2") format("woff2"),
+    url("fonts/gothammedium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+//:::::::::::Variables:::::::::::::
+//$primary-clr: rgba(98,104,250,1) ;
+$primary-clr: #ffa621;
+$secondary-clr: #fc911f;
+
+$font1: "gothambook";
+$font1bold: "gothambold";
+$font1light: "gothamlight";
+$font1medium: "gothammedium";
+//:::::::::::Variables:::::::::::::
+
+.bg-theme-clr {
+  background-color: $primary-clr;
+}
+$mountain_meadow: #21b387;
+$red_stage: #c54c06;
+$boston_blue: #3186b7;
+$vivid_violet: #8c3ca9;
+$persian_red: #d2393b;
+$colors: (mountain_meadow, $mountain_meadow), (red_stage, $red_stage),
+  (boston_blue, $boston_blue), (vivid_violet, $vivid_violet),
+  (persian_red, $persian_red);
+
+@each $thcolors, $color in $colors {
+  .txtcolor_#{$thcolors} {
+    color: $color;
+  }
+
+  .bgcolor_#{$thcolors} {
+    background-color: $color;
+  }
+}

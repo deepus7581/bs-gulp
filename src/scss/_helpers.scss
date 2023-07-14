@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@mixin my_transition($arg...) {
+  -webkit-transition: $arg;
+  -moz-transition: $arg;
+  -o-transition: $arg;
+  -ms-transition: $arg;
+  transition: $arg;
+}
+
+@mixin my_box_shadow($arg...) {
+  -webkit-box-shadow: $arg;
+  -moz-box-shadow: $arg;
+  box-shadow: $arg;
+}
+
+@mixin my_transform($arg...) {
+  -webkit-transform: $arg;
+  -moz-transform: $arg;
+  -o-transform: $arg;
+  -ms-transform: $arg;
+  transform: $arg;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin hide_text {
+  overflow: hidden;
+  text-indent: 200%;
+  white-space: nowrap;
+}

@@ -1,0 +1,75 @@
+body {
+  overflow: hidden;
+}
+$background-color_1: #f5c332;
+$background-color_2: #ffffff;
+$background-color_3: #231e41;
+
+.sb-preloader {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 99999999999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease-in-out;
+  .sb-preloader-bg {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    position: absolute;
+    background: rgb(138, 222, 250);
+    background: linear-gradient(
+      62deg,
+      rgba(138, 222, 250, 1) 0%,
+      rgba(244, 90, 192, 1) 35%,
+      rgba(98, 104, 250, 1) 100%
+    );
+    height: 1000px;
+    width: 1000px;
+    top: 20%;
+    transform: scale(2.5);
+    transition: 0.6s ease-in-out;
+  }
+  .sb-preloader-body {
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    text-align: center;
+    transition: 0.4s ease-in-out;
+    .sb-loading {
+      opacity: 0;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+    .sb-loading-bar {
+      margin-bottom: 15px;
+      width: 1px;
+      height: 80vh;
+      margin: 0 auto;
+      border-radius: 2px;
+      overflow: hidden;
+      background-color: $background-color_2;
+      .sb-bar {
+        width: 100%;
+        height: 0;
+        background-color: $background-color_3;
+      }
+    }
+  }
+}
+.sb-preloader.sb-hidden {
+  pointer-events: none;
+  transition-delay: 0.2s;
+  .sb-preloader-bg {
+    transform: scale(0);
+    transition-delay: 0.2s;
+  }
+  .sb-preloader-body {
+    transform: translateY(30%);
+    opacity: 0;
+    transition-delay: 0s;
+  }
+}

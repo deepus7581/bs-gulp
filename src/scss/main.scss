@@ -1,0 +1,14 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "helpers";
+@import "theme_variable";
+@import "loader";
+@import "base";
+
+body{
+    background-color: black;
+     color: fff;
+}
+   h1{
+    color: #000;
+     padding: 20px;
+   }
