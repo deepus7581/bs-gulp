@@ -24,3 +24,11 @@ This is a starter pack for creating HTML projects based on Bootstrap v5.3.0. It 
    ```bash
    npm install
    gulp
+
+## Gulp Tasks
+
+   ```bash
+   gulp css
+   gulp plugins
+   gulp scripts
+   gulp images
