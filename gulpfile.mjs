@@ -1,28 +1,26 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-// const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require("gulp-sourcemaps");
-const stylefmt = require("gulp-stylefmt");
-const autoprefixer = require("autoprefixer");
-const cssnano = require("cssnano");
-const stylelint = require("stylelint");
-const reporter = require("postcss-reporter");
-const postcss = require("gulp-postcss");
+import gulp from 'gulp';
+// import sass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import stylefmt from 'gulp-stylefmt';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import stylelint from 'stylelint';
+import reporter from 'postcss-reporter';
+import postcss from 'gulp-postcss';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
+import imagemin from 'gulp-imagemin';
+import webp from 'gulp-webp';
+import browserSync from 'browser-sync';
+import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
+import rename from 'gulp-rename';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+import {deleteAsync} from 'del';
 
-// const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-const browserSync = require('browser-sync').create();
-const prettier = require('gulp-prettier');
-const plumber = require('gulp-plumber');
-const htmlbeautify = require('gulp-html-beautify');
-const jsbeautifier = require('gulp-jsbeautifier');
-const sassbeautify = require('gulp-sassbeautify');
-const notify = require('gulp-notify');
-const changed = require('gulp-changed'); 
-const rename = require('gulp-rename');
+const deleteSync = deleteAsync;
+const sass = gulpSass(dartSass);
 
 var onError = function (err) {
   notify.onError(function (error) {
@@ -53,8 +51,8 @@ gulp.task("css", function () {
     .pipe(gulp.dest('dist/css'))
     .pipe(
       notify({
-        message: "SCSS compiled!",
-        sound: "Pop",
+        message: 'SCSS compiled!',
+        sound: 'Pop',
       })
     );
 });
@@ -78,7 +76,7 @@ gulp.task('plugins', function () {
     .pipe(concat('libraries.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream())
-    .pipe(notify({ "message": "Plugins concatenated and minified!" }));
+    .pipe(notify({ message: 'Plugins concatenated and minified!' }));
 });
 
 // Minify scripts.js
@@ -91,11 +89,12 @@ gulp.task('scripts', function () {
     .pipe(concat('scripts.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream())
-    .pipe(notify({ "message": "Scripts minified!" }));
+    .pipe(notify({ message: 'Scripts minified!' }));
 });
 
 // Optimize images and convert to WebP
 gulp.task('images', function () {
+  deleteSync(['dist/img/**/*', 'dist/img/webp/*']); // Exclude WebP images from deletion
   return gulp
     .src('src/img/**/*')
     .pipe(plumber())
@@ -104,7 +103,7 @@ gulp.task('images', function () {
     .pipe(webp())
     .pipe(gulp.dest('dist/img/webp'))
     .pipe(browserSync.stream())
-    .pipe(notify({ "message": "Images optimized and converted to WebP!" }));
+    .pipe(notify({ message: 'Images optimized and converted to WebP!' }));
 });
 
 // Format SCSS files
@@ -115,18 +114,18 @@ gulp.task('format-scss', function () {
     .pipe(changed('src/scss', { extension: '.scss' }))
     .pipe(sassbeautify())
     .pipe(gulp.dest('src/scss'))
-    .pipe(notify({ "message": "SCSS formatted!" }));
+    .pipe(notify({ message: 'SCSS formatted!' }));
 });
 
 // Format HTML/PHP files
-gulp.task('format-html-php', function () {
+gulp.task('format', function () {
   return gulp
     .src('**/*.html')
     .pipe(plumber())
     .pipe(changed('.', { extension: '.html' }))
     .pipe(htmlbeautify({ indent_size: 2 }))
     .pipe(gulp.dest('.'))
-    .pipe(notify({ "message":"HTML/PHP formatted!" }));
+    .pipe(notify({ message:'HTML/PHP formatted!' }));
 });
 
 // Format JS files
