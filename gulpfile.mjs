@@ -51,8 +51,8 @@ gulp.task("css", function () {
     .pipe(gulp.dest('dist/css'))
     .pipe(
       notify({
-        message: 'SCSS compiled!',
-        sound: 'Pop',
+        "message": "SCSS compiled!",
+        "sound": "Pop",
       })
     );
 });
@@ -76,7 +76,7 @@ gulp.task('plugins', function () {
     .pipe(concat('libraries.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream())
-    .pipe(notify({ message: 'Plugins concatenated and minified!' }));
+    .pipe(notify({ "message": "Plugins concatenated and minified!" }));
 });
 
 // Minify scripts.js
@@ -89,12 +89,12 @@ gulp.task('scripts', function () {
     .pipe(concat('scripts.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream())
-    .pipe(notify({ message: 'Scripts minified!' }));
+    .pipe(notify({ "message": "Scripts minified!" }));
 });
 
 // Optimize images and convert to WebP
 gulp.task('images', function () {
-  deleteSync(['dist/img/**/*', 'dist/img/webp/*']); // Exclude WebP images from deletion
+  deleteSync(['dist/img/**/*', 'dist/img/webp/**/*']); 
   return gulp
     .src('src/img/**/*')
     .pipe(plumber())
@@ -103,7 +103,8 @@ gulp.task('images', function () {
     .pipe(webp())
     .pipe(gulp.dest('dist/img/webp'))
     .pipe(browserSync.stream())
-    .pipe(notify({ message: 'Images optimized and converted to WebP!' }));
+    .pipe(notify({ "message": "Images optimized and converted to WebP!"}));
+    
 });
 
 // Format SCSS files
@@ -114,7 +115,7 @@ gulp.task('format-scss', function () {
     .pipe(changed('src/scss', { extension: '.scss' }))
     .pipe(sassbeautify())
     .pipe(gulp.dest('src/scss'))
-    .pipe(notify({ message: 'SCSS formatted!' }));
+    .pipe(notify({ "message": "SCSS formatted!" }));
 });
 
 // Format HTML/PHP files
@@ -125,7 +126,7 @@ gulp.task('format', function () {
     .pipe(changed('.', { extension: '.html' }))
     .pipe(htmlbeautify({ indent_size: 2 }))
     .pipe(gulp.dest('.'))
-    .pipe(notify({ message:'HTML/PHP formatted!' }));
+    .pipe(notify({ "message":"HTML/PHP formatted!" }));
 });
 
 // Format JS files
@@ -155,6 +156,7 @@ gulp.task('watch', function () {
   gulp.watch('*.html').on('change', browserSync.reload);
   gulp.watch('src/img/**/*', gulp.series('images')).on('change', browserSync.reload);
   gulp.watch('dist/img/**/*').on('change', browserSync.reload);
+  
   // gulp.watch('src/scss/**/*.scss', gulp.series('format-scss')).on('change', notifyOnSuccess('SCSS formatted!'));
   // gulp.watch('**/*.html', gulp.series('format-html-php')).on('change', notifyOnSuccess('HTML/PHP formatted!'));
   // gulp.watch('src/js/**/*.js', gulp.series('format-js')).on('change', notifyOnSuccess('JS formatted!'));

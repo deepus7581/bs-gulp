@@ -1,5 +1,5 @@
 {
-  "name": "BS Base",
+  "name": "vguz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -42,6 +42,8 @@
     "gulp-prettier": "^5.0.0",
     "gulp-sassbeautify": "^0.1.0",
     "node-notifier": "^10.0.1",
-    "postcss-reporter": "^7.0.5"
+    "notify-send": "^0.1.2",
+    "postcss-reporter": "^7.0.5",
+    "rimraf": "^5.0.5"
   }
 }
